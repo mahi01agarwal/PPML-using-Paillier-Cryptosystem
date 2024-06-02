@@ -15,15 +15,6 @@ Linear regression is employed as the modeling technique to establish the relatio
 - Then the computations are done on this data using paillier block of code and the prediction is returned in the encrypted form.
 - The user then decrypts this prediction using private key and gets the desired result.
 
-## Usage
-1. **Installation**: Clone the repository and install the required dependencies.
-   ```
-   git clone https://github.com/mahi01agarwal/PPML-using-Paillier-Cryptosystem.git
-   cd PPML-using-Paillier-Cryptosystem
-   pip install -r requirements.txt
-   ```
-
-
 
 ## Contributing
 Contributions to PPML using Paillier Cryptosystem are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request on the GitHub repository.
