@@ -2,6 +2,7 @@ import phe as paillier
 import json
 from sklearn.compose import ColumnTransformer
 import pickle
+import pandas as pd
 
 def storeKeys():
     # Generate Paillier public-private key pair
@@ -14,12 +15,12 @@ def storeKeys():
     }
     
     # Save keys to a JSON file
-    with open('custkeys.json', 'w') as file: 
+    with open('PaillierKeys/custkeys.json', 'w') as file: 
         json.dump(keys, file)
 
 def getKeys():
     # Load keys from JSON file
-    with open('custkeys.json', 'r') as file: 
+    with open('PaillierKeys/custkeys.json', 'r') as file: 
         keys = json.load(file)
         # Reconstruct Paillier public-private key pair
         pub_key = paillier.PaillierPublicKey(n=int(keys['public_key']['n']))
@@ -45,11 +46,15 @@ def preprocessData(data):
     with open('col_tnf.pkl', 'rb') as file:
         col_tnf = pickle.load(file)
     
-    # Transform the data using the loaded ColumnTransformer
-    trans_data = col_tnf.transform(data)
+    # Convert the input data to a DataFrame
+    columns = ['Company', 'TypeName', 'Ram', 'Weight', 'os', 'Cpu brand', 'ProcessorSpeed', 'Gpu brand', 'GpuModel', 'HDD', 'SSD', 'Hybrid', 'Flash_Storage', 'TouchScreen', 'IPSPanel', 'PPI']
+    data_df = pd.DataFrame(data, columns=columns)
     
-    # Reshape the transformed data
-    new_data = trans_data.reshape(-1)
+    # Transform the data using the loaded ColumnTransformer
+    trans_data = col_tnf.transform(data_df)
+    
+    # Flatten the transformed data
+    new_data = trans_data.flatten()
     return new_data
 
 def main():
@@ -59,15 +64,15 @@ def main():
     # Load Paillier keys
     pub_key, priv_key = getKeys()
     
-    # Sample data: ['Company', 'TypeName', 'Ram', 'OpSys', 'Weight', 'os', 'Cpu brand', 'ProcessorSpeed', 'Gpu brand', 'GpuModel', 'HDD', 'SSD', 'Hybrid', 'Flash_Storage', 'TouchScreen', 'IPSPanel', 'PPI']
-    data = [['Dell', 'Notebook', 8, 'Windows 10', 2.00, 'Windows', 'Intel Core i7', 2.8, 'Nvidia', 1050.0, 0, 256, 0, 0, 0, 0, 141.0211998]]
+    # Sample data
+    data = [['Dell', 'Notebook', 8, 2.00, 'Windows', 'Intel Core i7', 2.8, 'Nvidia', 1050.0, 0, 256, 0, 0, 0, 0, 141.0211998]]
     
     # Preprocess the data
     new_data = preprocessData(data)
     
     # Serialize and save the preprocessed data
     datafile = serializeData(pub_key, new_data)
-    with open('data.json', 'w') as file: 
+    with open('Encrypted_Data/data.json', 'w') as file: 
         json.dump(datafile, file)
 
 if __name__ == "__main__":

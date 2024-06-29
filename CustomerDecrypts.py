@@ -4,7 +4,7 @@ import numpy as np
 
 def getKeys():
     # Load keys from custkeys.json file
-    with open('custkeys.json', 'r') as file: 
+    with open('PaillierKeys\custkeys.json', 'r') as file: 
         keys = json.load(file)
         # Reconstruct Paillier public-private key pair
         pub_key = paillier.PaillierPublicKey(n=int(keys['public_key']['n']))
@@ -13,7 +13,7 @@ def getKeys():
 
 def loadAnswer():
     # Load encrypted answer from answer.json file
-    with open('answer.json', 'r') as file: 
+    with open('Encrypted_Predicted_value\\answer.json', 'r') as file: 
         ans = json.load(file)
     # Parse the JSON data
     answer_data = json.loads(ans)

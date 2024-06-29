@@ -4,21 +4,21 @@ import numpy as np
 
 # Function to load data from JSON file
 def getData():
-    with open('data.json', 'r') as file: 
+    with open('Encrypted_Data\data.json', 'r') as file: 
         d = json.load(file)
     data = json.loads(d)
     return data
 
 # Function to load coefficients from JSON file
 def getCoef():
-    with open('Coefficients.json', 'r') as file: 
+    with open('Encrypted_ModelParameters\Coefficients.json', 'r') as file: 
         d = json.load(file) 
         coef = np.array(d)
     return coef  
 
 # Function to load intercept from JSON file
 def get_Intercept():
-    with open('Intercept.json', 'r') as file: 
+    with open('Encrypted_ModelParameters\Intercept.json', 'r') as file: 
         d = json.load(file)
     return d   
 
@@ -53,7 +53,7 @@ def serializeData():
 # Main function to execute the code
 def main():
     datafile = serializeData()
-    with open('answer.json', 'w') as file:
+    with open('Encrypted_Predicted_value\\answer.json', 'w') as file:
         json.dump(datafile, file)
 
 if __name__ == "__main__":
