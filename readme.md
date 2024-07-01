@@ -8,12 +8,71 @@ Linear regression is employed as the modeling technique to establish the relatio
 ## Features
 - Implements machine learning algorithms using the Paillier encryption scheme to perform computations on encrypted data.
 - Ensures data privacy by encrypting data before processing.
+- Encrypts and decrypts data using a public-private key pair.
+- Performs linear regression to predict laptop prices while maintaining data privacy.
 
 ## How does it work?
-- The model is trained on the normal values and the values for the coefficient of fitted lines are derived.
-- Then the user provides the encrypted data and the public key which is used to encrypt the data.
-- Then the computations are done on this data using paillier block of code and the prediction is returned in the encrypted form.
-- The user then decrypts this prediction using private key and gets the desired result.
+1. **Key Generation and Storage:**
+   - Generate a Paillier public-private key pair.
+   - Store the keys securely in a JSON file.
+   
+2. **Data Preprocessing:**
+   - Convert raw data into a suitable format for machine learning.
+   - Serialize and encrypt the preprocessed data using the public key.
+
+3. **Model Computation:**
+   - Perform computations on the encrypted data using linear regression coefficients.
+   - Encrypt the model's intercept using the public key.
+   
+4. **Prediction:**
+   - Compute predictions on encrypted data.
+   - Return predictions in encrypted form.
+   
+5. **Decryption:**
+   - Decrypt the predictions using the private key.
+   - Obtain the final prediction result.
+
+## Project Structure
+
+PPML-using-Paillier-Cryptosystem/
+├── Data/
+├── Encrypted_Data/
+├── Encrypted_ModelParameters/
+├── Encrypted_Predicted_value/
+├── PaillierKeys/
+├── Tests/
+│ ├── test_CustomerDecrypts.py
+│ ├── test_CustomerEncrypts.py
+│ ├── test_ServerModelRun.py
+├── col_tnf.pkl
+├── CustomerDecrypts.py
+├── CustomerEncrypts.py
+├── LICENSE
+├── PreProcessingDataAndModel.pkl
+├── readme.md
+└── ServerModelRun.py
+
+## Installation
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/yourusername/PPML-using-Paillier-Cryptosystem.git
+   cd PPML-using-Paillier-Cryptosystem
+
+## Usage
+1. Generate Keys:
+    ```sh
+    python CustomerEncrypts.py
+2. Encrypt Data:
+    - Ensure your data is in the appropriate format.
+    - Run the script to preprocess and encrypt data.
+    ```sh
+    python CustomerEncrypts.py
+3. Compute Encrypted Predictions:
+    ```sh
+    python ServerModelRun.py
+4. Decrypt Predictions:
+    ```sh
+    python CustomerDecrypts.py
 
 
 ## Contributing
