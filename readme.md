@@ -34,23 +34,24 @@ Linear regression is employed as the modeling technique to establish the relatio
 
 ## Project Structure
 
-PPML-using-Paillier-Cryptosystem/
-├── Data/
-├── Encrypted_Data/
-├── Encrypted_ModelParameters/
-├── Encrypted_Predicted_value/
-├── PaillierKeys/
-├── Tests/
-│ ├── test_CustomerDecrypts.py
-│ ├── test_CustomerEncrypts.py
-│ ├── test_ServerModelRun.py
-├── col_tnf.pkl
-├── CustomerDecrypts.py
-├── CustomerEncrypts.py
-├── LICENSE
-├── PreProcessingDataAndModel.pkl
-├── readme.md
-└── ServerModelRun.py
+      
+      PPML-using-Paillier-Cryptosystem/
+      ├── Data/
+      ├── Encrypted_Data/
+      ├── Encrypted_ModelParameters/
+      ├── Encrypted_Predicted_value/
+      ├── PaillierKeys/
+      ├── Tests/
+      │ ├── test_CustomerDecrypts.py
+      │ ├── test_CustomerEncrypts.py
+      │ ├── test_ServerModelRun.py
+      ├── col_tnf.pkl
+      ├── CustomerDecrypts.py
+      ├── CustomerEncrypts.py
+      ├── LICENSE
+      ├── PreProcessingDataAndModel.pkl
+      ├── readme.md
+      └── ServerModelRun.py
 
 ## Installation
 1. Clone the repository:
